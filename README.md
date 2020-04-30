@@ -1,3 +1,3 @@
-# shinatora_renrakuhyo
-# sinatora_renrakuhyo
-# confirm
+# README
+
+## 確認画面の実装
