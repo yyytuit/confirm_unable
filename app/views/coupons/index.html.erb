@@ -1,2 +1,25 @@
 <h2>クーポン一覧</h2>
-<%= link_to '登録', new_coupon_path %>
+<%= link_to 'クーポン新規作成', new_coupon_path %>
+
+<p id="notice"><%= notice %></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>クーポン名</th>
+      <th>金額</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @coupons.each do |coupon| %>
+      <tr>
+        <td><%= link_to coupon.name, coupon_path(coupon) %></td>
+        <td><%= coupon.price %></td>
+        <td><%= link_to '購入' %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>

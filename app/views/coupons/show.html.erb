@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>クーポン名:</strong>
+  <%= @coupon.name %>
+</p>
+<p>
+  <strong>金額:</strong>
+  <%= @coupon.price %>
+</p>
+
+<%= link_to '編集', edit_coupon_path(@coupon) %> |
+<td><%= link_to '削除', @coupon, method: :delete, data: { confirm: 'Are you sure?' } %></td> |
+<%= link_to '戻る', coupons_path %>

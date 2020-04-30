@@ -1,5 +1,7 @@
 class CouponsController < ApplicationController
+  before_action :set_coupon, only: [:show, :edit, :update, :destroy]
   def index
+    @coupons = Coupon.all
   end
 
   def show
@@ -12,36 +14,32 @@ class CouponsController < ApplicationController
   def create
     @coupon = Coupon.new(coupon_params)
     if @coupon.save
-      p "セーブ"
       redirect_to @coupon
     else
-      p "セーブ失敗"
-      p @coupon.errors.full_messages
       render :new
     end
-    # respond_to do |format|
-    #   if @coupon.save
-    #     format.html { redirect_to @coupon, notice: 'Todo was successfully created.' }
-    #     format.json { render :show, location: @coupon }
-    #   else
-    #     format.html { render :new }
-    #     format.json { render json: @coupon.errors }
-    #   end
   end
 
   def edit
   end
 
   def update
+    if @coupon.update(coupon_params)
+      redirect_to @coupon
+    else
+      render :edit
+    end
   end
 
   def destroy
+    @coupon.destroy
+    redirect_to coupons_url
   end
 
   private
 
-  def set
-    @coupon = Coupon.find(params[id])
+  def set_coupon
+    @coupon = Coupon.find(params[:id])
   end
 
   def coupon_params
