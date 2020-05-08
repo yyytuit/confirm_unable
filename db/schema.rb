@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_30_145810) do
+ActiveRecord::Schema.define(version: 2020_05_03_085031) do
+
+  create_table "buys", force: :cascade do |t|
+    t.integer "coupon_id"
+    t.integer "amount"
+    t.integer "total_price"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "coupons", force: :cascade do |t|
     t.string "name", null: false

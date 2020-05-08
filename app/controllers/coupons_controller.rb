@@ -12,6 +12,8 @@ class CouponsController < ApplicationController
   end
 
   def create
+    p "#######params#######"
+    p params
     @coupon = Coupon.new(coupon_params)
     if @coupon.save
       redirect_to @coupon

@@ -1,0 +1,29 @@
+<%= form_with( model: @purchase, local: true, url: {action: :confirm}) do |form| %>
+    <h2>購入手続き</h2>
+    <% if @purchase.errors.any? %>
+      <div id="error_explanation">
+        <%= @purchase.errors.count %>件のエラーがあります。
+        <ul>
+          <% @purchase.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+  <div class="field">
+    <%= form.label :coupon_id %>
+    <%= form.text_field :coupon_id %>
+  </div>
+  <div class="field">
+    <%= form.label :amount %>
+    <%= form.text_field :amount %>
+  </div>
+  <div class="field">
+    <%= form.label :total_price %>
+    <%= form.text_field :total_price %>
+  </div>
+  <div class="actions">
+    <%= form.submit '確認する' %>
+  </div>
+<% end %>

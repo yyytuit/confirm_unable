@@ -1,0 +1,40 @@
+<%= form_with( model: @buy, local: true) do |form| %>
+  <% if @buy.confirming.blank? %>
+
+  <div class="field">
+    <%= form.label :coupon_id %>
+    <%= form.text_field :coupon_id %>
+  </div>
+  <div class="field">
+    <%= form.label :amount %>
+    <%= form.text_field :amount %>
+  </div>
+  <div class="field">
+    <%= form.label :total_price %>
+    <%= form.text_field :total_price %>
+  </div>
+  <div class="actions">
+    <%= form.submit '確認する' %>
+  </div>
+  <% else %>
+    <div class="field">
+      <%= form.label :coupon_id %>
+      <%= form.text_field :coupon_id %>
+    </div>
+    <div class="field">
+      <%= form.label :amount %>
+      <%= form.text_field :amount %>
+    </div>
+    <div class="field">
+      <%= form.label :total_price %>
+      <%= form.text_field :total_price %>
+    </div>
+    <div class="actions">
+      <%= form.submit '投稿画面に戻る', name: 'back' %>
+    </div>
+    <div class="actions">
+      <%= form.submit '完了する' %>
+    </div>
+    <%= form.text_field :confirming %>
+  <% end %>
+<% end %>

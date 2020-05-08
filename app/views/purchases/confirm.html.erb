@@ -1,0 +1,21 @@
+<%= form_with( model: @purchase, local: true, url: {action: :create}) do |form| %>
+<%# <%= hidden_field_tag :finish, true %> %>
+  <div class="field">
+    <%= form.label :coupon_id %>
+    <%= form.text_field :coupon_id %>
+  </div>
+  <div class="field">
+    <%= form.label :amount %>
+    <%= form.text_field :amount %>
+  </div>
+  <div class="field">
+    <%= form.label :total_price %>
+    <%= form.text_field :total_price %>
+  </div>
+  <div class="actions">
+    <%= form.submit '投稿画面に戻る', name: 'back' %>
+  </div>
+  <div class="actions">
+    <%= form.submit '完了する' %>
+  </div>
+<% end %>
