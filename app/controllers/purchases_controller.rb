@@ -7,17 +7,20 @@ class PurchasesController < ApplicationController
     p "#######params#######"
     p params
     @purchase = Purchase.new(purchase_params)
-    # render :new if @purchase.invalid?
+    session[:purchase] = purchase_params
+    @purchase.assign_attributes(session[:purchase])
+    render :new if @purchase.invalid?
   end
 
   def create
     @purchase = Purchase.new(purchase_params)
-    # unless params[:finish] == 'true'
-    #   # build_contact
-    #   render :new
-    #   return
-    # end
+    unless params[:finish] == 'true'
+      # build_contact
+      render :new
+      return
+    end
     if @purchase.save
+      # session.delete(:purchase)
       redirect_to action: :finish
       # redirect_to action: :finish, kind: params[:kind], contact_id: @contact.id
     else
@@ -28,6 +31,7 @@ class PurchasesController < ApplicationController
   def finish
     p "#######params#######"
     p params
+    # @purchase = Purchase.new(purchase_params)
     # @purchase = Purchase.find(params[:id])
   end
 

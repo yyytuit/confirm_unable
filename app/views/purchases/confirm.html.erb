@@ -1,5 +1,4 @@
 <%= form_with( model: @purchase, local: true, url: {action: :create}) do |form| %>
-<%# <%= hidden_field_tag :finish, true %> %>
   <div class="field">
     <%= form.label :coupon_id %>
     <%= form.text_field :coupon_id %>

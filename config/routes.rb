@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   resources :purchases, only: [:new, :create] do
     collection do
       post :confirm
+      # get :confirm
+
       # post :confirm
       # get :finish
       get :finish
